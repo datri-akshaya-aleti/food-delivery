@@ -1,0 +1,1182 @@
+You are continuing an EXISTING project called:
+
+"Rasoi Route — Smart Indian Food Delivery Billing System"
+
+The project was previously developed using Lovable and is already partially complete.
+
+IMPORTANT:
+DO NOT rebuild the project from scratch.
+DO NOT replace the existing frontend.
+DO NOT delete working features.
+DO NOT create a completely different UI.
+DO NOT blindly rewrite the existing code.
+
+First inspect the entire repository and understand the existing implementation.
+
+Then continue and improve the existing project.
+
+============================================================
+1. PROJECT OBJECTIVE
+============================================================
+
+This is a Computational Thinking and Programming project for a college project defence.
+
+The real-world problem is:
+
+"An Indian food-delivery application needs to process an order containing multiple food items, calculate the subtotal, apply discounts, calculate delivery charges and taxes, and finally generate the bill."
+
+The final project must demonstrate:
+
+- Problem identification
+- Problem decomposition
+- Abstraction
+- Pattern recognition
+- Algorithm design
+- Data structure selection
+- Python programming
+- Object-oriented programming
+- Functional programming
+- Concurrency where appropriate
+- Software testing
+- Static type checking
+- Linting and formatting
+- Performance analysis
+- AI-assisted software engineering
+- Live demonstration / Defence Mode
+
+The existing project already contains many frontend features.
+
+PRESERVE THEM.
+
+============================================================
+2. FIRST STEP — INSPECT EXISTING PROJECT
+============================================================
+
+Before modifying anything:
+
+1. Inspect all important source files.
+2. Identify the frontend framework.
+3. Identify existing billing logic.
+4. Identify existing menu data.
+5. Identify existing food images.
+6. Identify existing tests.
+7. Identify existing documentation pages.
+8. Identify existing API/server functions.
+9. Identify existing data structures.
+10. Identify all monetary values and how they are represented.
+
+Run the existing tests if possible.
+
+Run the existing build if possible.
+
+Record the current baseline before making major changes.
+
+DO NOT fabricate test results.
+
+============================================================
+3. PRESERVE EXISTING PROFESSIONAL UI
+============================================================
+
+The current project already has a food-delivery style interface.
+
+Preserve and improve it.
+
+Do NOT turn the application into a generic AI dashboard.
+
+Keep the existing professional food-delivery design.
+
+Preserve:
+
+- Menu
+- Food cards
+- Food images
+- Search
+- Category filtering
+- Cart
+- Quantity controls
+- Coupons
+- Bill/invoice
+- Print/save bill
+- Computational Thinking page
+- Architecture page
+- Testing page
+- Performance page
+- AI-Assisted Engineering page
+- Defence Mode
+
+Improve visual quality only where necessary.
+
+Use:
+
+- consistent typography
+- proper spacing
+- responsive layout
+- professional icons
+- subtle animations
+- accessible components
+- loading states
+- empty states
+- error states
+- high-quality food images
+
+Avoid:
+
+- excessive gradients
+- excessive glassmorphism
+- excessive rounded cards
+- unnecessary animations
+- emoji-based UI icons
+- random colors
+- inconsistent spacing
+
+The application should look like a professional food-tech product.
+
+============================================================
+4. VERY IMPORTANT — CURRENCY MIGRATION
+============================================================
+
+The existing project may currently represent prices using paise-style integers.
+
+For example:
+
+9900
+22000
+50000
+150000
+
+DO NOT keep this representation.
+
+Change the entire project to represent monetary values directly in Indian Rupees.
+
+Use:
+
+99.00
+220.00
+500.00
+1500.00
+
+The user-facing UI must display:
+
+₹99.00
+₹220.00
+₹500.00
+₹1,500.00
+
+Do NOT use:
+
+₹9900
+₹22000
+
+Do not blindly replace numbers globally.
+
+Search the entire repository and understand what every monetary number represents before changing it.
+
+Update ALL relevant locations, including:
+
+- menu data
+- food prices
+- cart calculations
+- subtotal calculations
+- discount thresholds
+- coupon values
+- delivery charges
+- GST
+- bill calculations
+- test fixtures
+- mock data
+- API responses
+- frontend types
+- backend models
+- documentation
+- examples
+- performance test data
+
+============================================================
+5. CURRENCY IMPLEMENTATION
+============================================================
+
+For the Python backend, use Decimal.
+
+DO NOT use Python float for authoritative monetary calculations.
+
+Use:
+
+from decimal import Decimal
+
+Examples:
+
+Decimal("99.00")
+Decimal("220.00")
+Decimal("500.00")
+Decimal("1500.00")
+
+Example:
+
+price = Decimal("99.00")
+quantity = 2
+
+item_total = price * quantity
+
+Result:
+
+Decimal("198.00")
+
+Create a reusable currency formatter:
+
+format_currency(value: Decimal) -> str
+
+Examples:
+
+Decimal("99")
+→ ₹99.00
+
+Decimal("249.5")
+→ ₹249.50
+
+Decimal("1249.5")
+→ ₹1,249.50
+
+All monetary values shown in the UI must have exactly two decimal places.
+
+============================================================
+6. FOOD MENU PRICES
+============================================================
+
+Use realistic Indian food prices.
+
+Use these as the baseline:
+
+Idli
+₹99.00
+
+Vada
+₹79.00
+
+Masala Dosa
+₹149.00
+
+Chicken Biryani
+₹249.00
+
+Chicken 65
+₹199.00
+
+Paneer Butter Masala
+₹229.00
+
+Veg Fried Rice
+₹179.00
+
+Chicken Fried Rice
+₹219.00
+
+Butter Naan
+₹59.00
+
+Samosa
+₹49.00
+
+Gulab Jamun
+₹89.00
+
+Mango Lassi
+₹99.00
+
+If the existing project already contains a more complete menu, preserve the existing food items and images while ensuring their prices use the new ₹XX.XX format.
+
+============================================================
+7. DISCOUNT RULES
+============================================================
+
+Use rupee values directly.
+
+Subtotal below ₹500.00:
+
+0% discount
+
+Subtotal from ₹500.00 to below ₹1000.00:
+
+10%
+
+Subtotal from ₹1000.00 to below ₹1500.00:
+
+15%
+
+Subtotal ₹1500.00 or above:
+
+20%
+
+Coupons:
+
+WELCOME50
+₹50.00 flat discount
+
+SAVE10
+10% discount
+
+FESTIVE20
+20% discount
+
+The system must never allow:
+
+discount > subtotal
+
+The discount calculation must be performed by the backend.
+
+============================================================
+8. DELIVERY CHARGES
+============================================================
+
+Use:
+
+Subtotal below ₹300.00
+→ ₹40.00
+
+Subtotal ₹300.00 to below ₹600.00
+→ ₹30.00
+
+Subtotal ₹600.00 to below ₹1000.00
+→ ₹20.00
+
+Subtotal ₹1000.00 or above
+→ FREE DELIVERY
+
+Display:
+
+₹40.00
+₹30.00
+₹20.00
+₹0.00
+
+Create a separate delivery strategy/service.
+
+============================================================
+9. GST
+============================================================
+
+Use:
+
+GST = 5%
+
+Use Decimal calculations.
+
+Example:
+
+taxable_amount = Decimal("500.00")
+
+GST:
+
+taxable_amount * Decimal("0.05")
+
+Round monetary values appropriately to two decimal places.
+
+============================================================
+10. FINAL BILL
+============================================================
+
+Final total:
+
+Subtotal
+- Discount
++ Delivery Charge
++ GST
+
+Example structure:
+
+Subtotal       ₹850.00
+Discount       -₹85.00
+Delivery       ₹20.00
+GST             ₹39.25
+-----------------------
+Grand Total    ₹824.25
+
+The backend must be the authoritative source of this calculation.
+
+The frontend must NOT be trusted for the final bill.
+
+============================================================
+11. PYTHON BACKEND
+============================================================
+
+Add a Python FastAPI backend without destroying the existing frontend.
+
+Recommended structure:
+
+backend/
+
+    app/
+        __init__.py
+        main.py
+
+        models/
+            __init__.py
+            food.py
+            order.py
+            bill.py
+
+        services/
+            __init__.py
+            billing_service.py
+            subtotal_service.py
+            tax_service.py
+
+        strategies/
+            __init__.py
+            discount.py
+            delivery.py
+
+        api/
+            __init__.py
+            routes.py
+
+        utils/
+            __init__.py
+            currency.py
+
+    tests/
+        test_billing.py
+        test_discount.py
+        test_delivery.py
+        test_tax.py
+        test_validation.py
+        test_properties.py
+
+    requirements.txt
+    pyproject.toml
+
+Use Python type hints everywhere.
+
+============================================================
+12. PYTHON DATA MODELS
+============================================================
+
+Create:
+
+FoodItem
+OrderItem
+Order
+BillLine
+Bill
+
+Use:
+
+dataclasses
+
+and/or
+
+Pydantic models
+
+Use explicit type hints.
+
+============================================================
+13. OBJECT-ORIENTED PROGRAMMING
+============================================================
+
+Use proper abstraction.
+
+Create:
+
+DiscountStrategy
+
+DeliveryStrategy
+
+Concrete discount strategies:
+
+NoDiscount
+PercentageDiscount
+FlatDiscount
+FestivalDiscount
+
+Concrete delivery strategies:
+
+StandardDelivery
+FreeDelivery
+DistanceBasedDelivery
+
+Use polymorphism.
+
+Use composition where appropriate.
+
+The BillingService should depend on strategy abstractions instead of hard-coded discount and delivery logic.
+
+Do NOT add inheritance unnecessarily.
+
+============================================================
+14. FUNCTIONAL PROGRAMMING
+============================================================
+
+Use functional programming where it naturally makes sense.
+
+Include:
+
+- pure functions
+- comprehensions
+- sum()
+- map/filter where useful
+- higher-order functions where useful
+
+Examples:
+
+calculate_item_total()
+calculate_subtotal()
+calculate_gst()
+
+These should be pure and independently testable where possible.
+
+Do not artificially add functional programming just to satisfy a checklist.
+
+============================================================
+15. DATA STRUCTURES
+============================================================
+
+Demonstrate appropriate data structures.
+
+Use:
+
+List:
+for order items
+
+Dictionary:
+for menu lookup
+
+Set:
+where useful for unique categories/coupons
+
+Dataclass:
+for structured entities
+
+Do not use complicated structures without justification.
+
+Add documentation explaining why each structure was selected.
+
+============================================================
+16. ALGORITHMS
+============================================================
+
+Document the algorithms.
+
+Subtotal:
+
+For each order item:
+
+price × quantity
+
+Then sum all item totals.
+
+Time complexity:
+
+O(n)
+
+Space complexity:
+
+O(n)
+
+Discount:
+
+Evaluate applicable discount rules.
+
+Delivery:
+
+Evaluate delivery thresholds.
+
+GST:
+
+taxable amount × GST rate.
+
+Final bill:
+
+combine all calculated components.
+
+Explain these in the Computational Thinking page.
+
+============================================================
+17. REST API
+============================================================
+
+Create:
+
+GET /api/health
+
+GET /api/menu
+
+POST /api/orders
+
+POST /api/orders/calculate
+
+POST /api/orders/{order_id}/bill
+
+POST /api/orders/{order_id}/coupon
+
+Use Pydantic validation.
+
+Return proper HTTP status codes.
+
+Enable FastAPI OpenAPI documentation.
+
+============================================================
+18. FRONTEND INTEGRATION
+============================================================
+
+Preserve the existing React frontend.
+
+Connect the billing workflow to the Python FastAPI backend.
+
+Frontend sends:
+
+- item IDs
+- quantities
+- coupon code
+
+Backend returns:
+
+- order ID
+- order items
+- subtotal
+- discount
+- discount label
+- delivery charge
+- delivery label
+- GST
+- grand total
+
+The frontend displays the backend result.
+
+Do not duplicate the authoritative billing algorithm in multiple places.
+
+============================================================
+19. FOOD IMAGES
+============================================================
+
+Preserve existing food images.
+
+Do not replace working images with broken URLs.
+
+Use appropriate images for:
+
+- Chicken Biryani
+- Chicken 65
+- Masala Dosa
+- Paneer Butter Masala
+- Idli
+- Vada
+- Veg Fried Rice
+- Chicken Fried Rice
+- Butter Naan
+- Samosa
+- Gulab Jamun
+- Mango Lassi
+
+Use lazy loading.
+
+Maintain fallback images if external images fail.
+
+============================================================
+20. ORDER WORKFLOW
+============================================================
+
+The user should be able to:
+
+1. Open menu
+2. Search food
+3. Filter category
+4. Add food
+5. Change quantity
+6. Remove food
+7. Open cart
+8. Apply coupon
+9. Calculate bill
+10. View detailed bill
+11. Print/save invoice
+
+The complete workflow must work without errors.
+
+============================================================
+21. STEP-BY-STEP BILLING VIEW
+============================================================
+
+Create or preserve a visual calculation flow:
+
+STEP 1
+Order Items
+
+↓
+
+STEP 2
+Item Totals
+
+↓
+
+STEP 3
+Subtotal
+
+↓
+
+STEP 4
+Discount Rule
+
+↓
+
+STEP 5
+Delivery Charge
+
+↓
+
+STEP 6
+GST
+
+↓
+
+STEP 7
+Final Total
+
+This is important for the live project defence.
+
+============================================================
+22. COMPUTATIONAL THINKING PAGE
+============================================================
+
+Preserve/improve the existing Computational Thinking page.
+
+Show:
+
+Real-World Problem
+↓
+Decomposition
+↓
+Abstraction
+↓
+Pattern Recognition
+↓
+Algorithm Design
+↓
+Data Structure Selection
+↓
+Implementation
+↓
+Testing
+↓
+Performance Analysis
+
+For every stage explain how it is actually implemented in the project.
+
+Do not make unsupported claims.
+
+============================================================
+23. ARCHITECTURE PAGE
+============================================================
+
+Show:
+
+React Frontend
+        ↓
+FastAPI REST API
+        ↓
+Billing Service
+        ↓
+Strategy Layer
+   ┌────┼─────┐
+   ↓    ↓     ↓
+Discount Delivery Tax
+   └────┼─────┘
+        ↓
+     Final Bill
+
+Make the diagram visually professional.
+
+============================================================
+24. TESTING
+============================================================
+
+Use pytest.
+
+Create tests for:
+
+1. Single item
+2. Multiple items
+3. Duplicate items
+4. Empty order
+5. Invalid item
+6. Invalid quantity
+7. Zero quantity
+8. Negative quantity
+9. Tier discount
+10. WELCOME50
+11. SAVE10
+12. FESTIVE20
+13. Discount cap
+14. Delivery thresholds
+15. GST
+16. Final total
+17. Large order
+18. Non-negative totals
+19. Increasing quantity cannot decrease subtotal
+
+Use Hypothesis/property-based testing where practical.
+
+Properties:
+
+- subtotal >= 0
+- discount >= 0
+- discount <= subtotal
+- GST >= 0
+- final total >= 0
+- increasing quantity cannot decrease subtotal
+
+Do not claim tests passed until actually executed.
+
+============================================================
+25. STATIC TYPE CHECKING
+============================================================
+
+Configure:
+
+mypy
+
+Use explicit type hints.
+
+Fix real mypy errors.
+
+============================================================
+26. LINTING AND FORMATTING
+============================================================
+
+Configure:
+
+ruff
+black
+
+Use clean code standards.
+
+============================================================
+27. CONCURRENCY
+============================================================
+
+Add a small educational asynchronous example for I/O-bound tasks.
+
+For example:
+
+- checking delivery availability
+- retrieving coupon information
+- simulated menu service
+
+Use async/await appropriately.
+
+Do NOT use multiprocessing unnecessarily.
+
+Document:
+
+CPU-bound vs I/O-bound
+asyncio
+Python GIL
+why asynchronous programming is useful here
+why multiprocessing is unnecessary for simple billing arithmetic
+
+============================================================
+28. PERFORMANCE ANALYSIS
+============================================================
+
+Create an actual benchmark.
+
+Test billing calculation with:
+
+10 order items
+100 order items
+1,000 order items
+10,000 order items
+
+Measure actual execution time.
+
+Do not fabricate numbers.
+
+Show results in the Performance page.
+
+Explain:
+
+Time complexity:
+O(n)
+
+Space complexity:
+O(n)
+
+============================================================
+29. DEFENCE MODE
+============================================================
+
+Preserve the Defence Mode page.
+
+Show cards for:
+
+Problem Decomposition
+Abstraction
+Algorithms
+Data Structures
+OOP
+Functional Programming
+Concurrency
+Testing
+Code Quality
+AI-Assisted Development
+Performance
+
+Each card must explain:
+
+What was used
+Why it was used
+Where it exists in the code
+Example
+
+Do not claim something exists unless it actually exists.
+
+============================================================
+30. AI-ASSISTED SOFTWARE ENGINEERING
+============================================================
+
+Maintain the AI-Assisted Engineering page.
+
+Explain:
+
+1. Specification
+2. Prompting
+3. AI-assisted implementation
+4. Human review
+5. Testing
+6. Bug fixing
+7. Validation
+8. Final improvement
+
+Clearly explain that AI-generated code was reviewed and tested.
+
+============================================================
+31. DATABASE
+============================================================
+
+If persistence is needed, use SQLite.
+
+Tables:
+
+FoodItem
+Order
+OrderItem
+
+Do not make the billing engine dependent on the database.
+
+The billing engine should be independently testable.
+
+============================================================
+32. ERROR HANDLING
+============================================================
+
+Handle:
+
+- empty cart
+- invalid food ID
+- invalid quantity
+- negative quantity
+- zero quantity
+- invalid coupon
+- discount greater than subtotal
+- backend unavailable
+- malformed API request
+
+Show user-friendly error messages.
+
+============================================================
+33. SECURITY / VALIDATION
+============================================================
+
+Never trust prices sent from the frontend.
+
+The backend must retrieve/validate authoritative menu prices.
+
+The frontend should send item IDs and quantities rather than trusting client-provided totals.
+
+Validate all request data.
+
+Do not expose secrets or API keys in frontend code.
+
+============================================================
+34. PROFESSIONAL UI QUALITY
+============================================================
+
+Keep the UI premium and professional.
+
+Use:
+
+- modern typography
+- consistent spacing
+- high-quality food imagery
+- professional cards
+- clean navigation
+- subtle hover effects
+- smooth but restrained transitions
+- responsive layout
+- accessible controls
+- clear hierarchy
+
+Do not make it look like a basic student CRUD application.
+
+Do not copy Swiggy/Zomato branding.
+
+Create an original food-tech identity.
+
+============================================================
+35. FINAL VERIFICATION
+============================================================
+
+After implementation:
+
+Run:
+
+1. Python tests
+2. Hypothesis tests
+3. Ruff
+4. Black check
+5. Mypy
+6. Frontend tests
+7. Frontend build
+8. Backend startup
+9. Frontend startup
+10. Full order workflow
+
+Test an actual demo order:
+
+2 × Chicken Biryani
+1 × Chicken 65
+2 × Butter Naan
+1 × Mango Lassi
+2 × Gulab Jamun
+
+Verify:
+
+- item totals
+- subtotal
+- discount
+- delivery
+- GST
+- final total
+
+Make sure all currency values are displayed as:
+
+₹XX.XX
+
+and not paise-style numbers.
+
+============================================================
+36. IMPORTANT CURRENCY VERIFICATION
+============================================================
+
+Before finishing, search the entire repository for suspicious old paise-style values such as:
+
+9900
+22000
+50000
+100000
+150000
+30000
+4000
+2000
+
+Do not automatically delete them.
+
+Determine whether each occurrence represents:
+
+- money
+- IDs
+- timestamps
+- quantities
+- unrelated data
+
+Convert only monetary values.
+
+Ensure all monetary values use the new rupee representation.
+
+============================================================
+37. NO FAKE RESULTS
+============================================================
+
+Never say:
+
+"All tests passed"
+
+unless tests were actually executed.
+
+Never say:
+
+"100% coverage"
+
+unless coverage was actually measured.
+
+Never say:
+
+"API working"
+
+unless it was actually tested.
+
+If something cannot be verified, explicitly say:
+
+"Not verified."
+
+============================================================
+38. FINAL RESPONSE FROM THE AGENT
+============================================================
+
+After completing the work, report:
+
+1. Existing features preserved
+2. New features added
+3. Currency migration completed
+4. Python backend status
+5. API status
+6. OOP implementation
+7. Functional programming implementation
+8. Concurrency implementation
+9. Tests executed
+10. Test results
+11. Mypy result
+12. Ruff result
+13. Build result
+14. Remaining issues
+
+Do not hide failures.
+
+============================================================
+FINAL GOAL
+============================================================
+
+The final project must feel like a polished, professional Indian food-delivery application while also being technically strong enough for a Computational Thinking and Programming project defence.
+
+The application should demonstrate:
+
+REAL-WORLD PROBLEM
+        ↓
+PROBLEM DECOMPOSITION
+        ↓
+ABSTRACTION
+        ↓
+ALGORITHMS
+        ↓
+DATA STRUCTURES
+        ↓
+PYTHON
+        ↓
+OOP + FUNCTIONAL PROGRAMMING
+        ↓
+CONCURRENCY WHERE APPROPRIATE
+        ↓
+TESTING
+        ↓
+CODE QUALITY
+        ↓
+PERFORMANCE
+        ↓
+AI-ASSISTED DEVELOPMENT
+        ↓
+LIVE DEMONSTRATION
+
+Most importantly:
+
+PRESERVE THE EXISTING LOVABLE WORK.
+
+IMPROVE IT.
+
+DO NOT START OVER.
